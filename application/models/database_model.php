@@ -54,21 +54,34 @@ class Database_model extends CI_Model {
         return $this->db->insert($tableName, $data);
     }
 
+
     function show_approved(){
         $this->db->select('*, t_approved.id AS approvedID');
         $this->db->from('t_approved');
         $this->db->join('t_request', 't_request.id = t_approved.approvedRequestID', 'left');
         $this->db->join('t_user', 't_user.id = t_approved.approvedUserID', 'left');
-        $this->db->where('t_request.requestDate < GETDATE()');
+        $this->db->where('t_request.requestDate > dateadd(DD,-1,getdate())');
         $this->db->where('t_approved.approvedStatus = 1');
         $query = $this->db->get();
         $data = $query->result();
         return $data;
     }
 
+    function show_all_approved(){
+        $this->db->select('*, t_approved.id AS approvedID');
+        $this->db->from('t_request');
+        $this->db->join('t_approved', 't_request.id = t_approved.approvedRequestID', 'left');
+        $this->db->join('t_user', 't_user.id = t_approved.approvedUserID', 'left');
+        $this->db->where('approvedRequestID IS NOT NULL');
+        $this->db->where('approvedUserID IS NOT NULL');
+        $query = $this->db->get();
+        $data = $query->result();
+        return $data;
+    }
 
-    function get_user(){
-        $this->db->select("*"); // SELECT *
+
+    function get_user_count(){
+        $this->db->select("COUNT(*) AS userCount"); // SELECT *
         $this->db->from('t_user'); // SELECT * FROM t_user
         $this->db->where('userStatus', '1'); // SELECT * FROM t_user WHERE userStatus = 1
         $query = $this->db->get();
@@ -76,5 +89,28 @@ class Database_model extends CI_Model {
         return $data;
     }
 
-    
+    function get_request_count(){
+        $this->db->select('COUNT(*) AS requestCount');
+        $this->db->from('t_request');
+        $query = $this->db->get();
+        $data = $query->result();
+        return $data;
+    }
+    function get_approved_count(){
+        $this->db->select('COUNT(*) AS approvedCount');
+        $this->db->from('t_approved');
+        $this->db->where('approvedRequestID IS NOT NULL');
+        $query = $this->db->get();
+        $data = $query->result();
+        return $data;
+    }
+    function get_declined_count(){
+        $this->db->select('COUNT(*) AS declinedCount');
+        $this->db->from('t_request');
+        $this->db->where('requestStatus', 0);
+        $query = $this->db->get();
+        $data = $query->result();
+        return $data;
+    }
+
 }

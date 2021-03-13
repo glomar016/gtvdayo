@@ -26,6 +26,7 @@ class Auth_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('t_user');
         $this->db->where($condition);
+        $this->db->where('userStatus = 1');
         $this->db->limit(1);
         $query = $this->db->get();
         

@@ -67,6 +67,10 @@ class Login extends CI_Controller {
                         echo json_encode($data);
 						
 					}
+					else{
+						$data['result'] = 'Error';
+						echo json_encode($data);
+					}
 				} 
 				else {
 					$data['result'] = 'Error';

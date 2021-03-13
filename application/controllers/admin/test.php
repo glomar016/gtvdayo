@@ -20,19 +20,9 @@ class Test extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('admin/test');
+		$date = date('F d, Y');
+		echo $date;
 	}
 
-    public function get_all_users(){
-        $data["data"] = $this->database_model->get_user();
 
-        echo json_encode($data);
-    }
-
-    public function delete_user(){
-
-        $id = $this->input->post('id');
-
-        $this->database_model->delete($id, 'userStatus', 't_user');
-    }
 }

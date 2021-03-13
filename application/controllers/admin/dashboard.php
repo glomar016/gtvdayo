@@ -20,6 +20,12 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('admin/dashboard');
+		$data['request'] = $this->database_model->get_request_count();
+		$data['approved'] = $this->database_model->get_approved_count();
+		$data['declined'] = $this->database_model->get_declined_count();
+		$data['user'] = $this->database_model->get_user_count();
+
+
+		$this->load->view('admin/dashboard', $data);
 	}
 }

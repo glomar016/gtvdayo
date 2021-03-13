@@ -165,6 +165,7 @@ $(document).ready(function(){
     // DELETE USER
     $(document).on("click", ".btnDelete", function(){
         var id = this.value
+        console.log(id)
 
         Swal.fire({
             title: 'Are you sure?',
@@ -197,7 +198,7 @@ $(document).ready(function(){
     })
     // END OF DELETE USER
 
-    // DELETE USER
+    // APPROVE USER
     $(document).on("click", ".btnApprove", function(){
         var id = this.value
 
@@ -208,7 +209,6 @@ $(document).ready(function(){
 
     $('#sendForm').on('submit', function(e){
         var id = $('#sendID').val()
-        console.log(id)
         var address = $('#sendAddress').val()
         var time = $('#sendTime').val()
         e.preventDefault()

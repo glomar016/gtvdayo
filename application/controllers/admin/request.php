@@ -49,7 +49,8 @@ class Request extends CI_Controller {
 
 	public function delete_request()
 	{
-		$id = $this->input->get('id');
+		$id = $this->input->post('id');
+		echo $id;
 		$this->database_model->delete($id, "requestStatus", "t_request");
 	}
 

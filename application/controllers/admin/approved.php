@@ -29,6 +29,12 @@ class Approved extends CI_Controller {
 		echo json_encode($data);
 	}
 
+    public function show_all_approved(){
+		$data['data'] = $this->database_model->show_all_approved();
+
+		echo json_encode($data);
+	}
+
 	public function delete_approved(){
 
 		$id = $this->input->post('id');
