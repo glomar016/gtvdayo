@@ -1,0 +1,45 @@
+[SP_INSERT_USER]
+So dito po sa SP_INSERT_USER maam
+Meron po siyang dalawang parameter which is yung 
+@userName and @userPassword na may datatype na varchar
+
+tapos ang query niya maam is
+
+INSERT INTO t_user table, tapos userName, userPassword columns
+and yung values nila is yung marereceived sa parameter @userName
+at @userPassword
+
+tapos sa front end po (pakita nyo yung application/models/database_models [line 6-8]
+
+
+[SP_INSERT_REQUEST]
+
+So dito naman po sa SP_INSERT_REQUEST
+meron po siyang anim na parameter which is yung
+@requestApplicantName
+@requestTeamName
+@requestBarangay
+@requestCity
+@requestEmail
+@requestDate 
+
+tapos yung query niya maam is
+
+INSERT INTO t_request table tapos ang columns niya is
+requestApplicantName
+requestTeamName
+requestBarangay
+requestCity
+requestEmail
+requestDate
+tapos ang values niya po is
+yung values na marereceived sa parameters
+which is yung 
+@requestApplicantName
+@requestTeamName
+@requestBarangay
+@requestCity
+@requestEmail
+@requestDate
+
+tapos sa front end po (pakita nyo yung application/models/database_models [line 10-12]

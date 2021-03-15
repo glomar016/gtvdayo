@@ -1,0 +1,34 @@
+so bali po merong kaming tatlong table
+
+una po is yung t_user which is dito po nilalagay yung records ng mga admins account
+meron po siyang 
+id which is the primary key ng table
+userName VARCHAR
+userPassword VARCHAR
+userStatus INT na may default value na 1
+userDateCreated na may default value po ng GETDATE()
+tas constraint po is yung PK_user which is id as primary key
+
+pangalawa naman po is yung t_request which is dito po nilalagay yung records ng mga game request
+meron po siyang id which is the primary key din po ng table na to
+requestApplicantName VARCHAR 
+requestTeamName VARCHAR
+requestBarangay VARCHAR
+requestCity VARCHAR
+requestEmail VARCHAR
+requestDate DATETIME
+requestStatus INT na may default value na 1
+requestDateCreated na may default value po ng GETDATE()
+tapos constraint po na PK_request which is id din po as primary key
+
+tapos yung last table po is yung t_approved
+meron po siyang 
+id as primary key
+approvedRequestID NUMERIC which is foreign key po siya ng t_request id
+approvedUserID NUMERIC which is foreign key din po siya ng t_user id
+approvedStatus INT na may default value na 1
+approvedDateTime DATETIME na may default value po ng GETDATE()
+tapos constraint po niya is 
+PK_approved which is id as primary key
+FK_approved_request which is approvedRequestID as foreign key ng table na t_request
+and FK_approved_user which is approvedUserID as foreign key ng table na t_user
